@@ -1,2 +1,33 @@
-# omarja12.github.io
-Portfolio site: Quantitative Finance &amp; Data Science
+# Omar Ja - Portfolio Site
+
+Quantitative Finance & Data Science Portfolio
+
+**Live:** https://omarja12.github.io
+
+## 📊 Projects
+
+8 featured projects:
+- **Quant Finance:** Momentum Backtest, Bootstrap Yield Curve, Nelson-Siegel-Svensson
+- **Machine Learning:** Customer Clustering
+- **NLP:** Sentiment Analysis  
+- **Computer Vision:** Pneumonia Detection
+- **Optimization:** Genetic Algorithm TSP
+- **Blockchain:** Fintech Smart Contracts
+
+## 🚀 Setup
+
+See DEPLOYMENT_GUIDE.md for step-by-step instructions to:
+1. Clone & setup React
+2. Deploy to GitHub Pages
+3. Update projects
+
+## 📝 Update Projects
+
+Edit `portfolio_site.jsx` projects array to add/update projects.
+
+See PORTFOLIO_UPDATE_GUIDE.md for quick examples.
+
+## 🔗 Links
+
+- GitHub: https://github.com/omarja12
+- Momentum Backtest: https://github.com/omarja12/Momentum-Backtest
