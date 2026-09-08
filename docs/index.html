@@ -1,643 +1,356 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Omar Ja - Data Science & Quantitative Finance</title>
-    <style>
-        * { margin: 0; padding: 0; box-sizing: border-box; }
-        
-        :root {
-            --primary: #0066cc;
-            --primary-dark: #0052a3;
-            --primary-light: #e6f2ff;
-            --secondary: #00d4ff;
-            --dark: #0f1419;
-            --text: #1a1a1a;
-            --text-light: #666;
-            --border: #e0e0e0;
-            --bg: #ffffff;
-            --bg-light: #f8f9fa;
-        }
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Omar Ja — Quantitative Research &amp; Machine Learning</title>
+<meta name="description" content="Quantitative finance and machine learning portfolio. Live, deployed projects — not slides.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Source+Serif+4:opsz,wght@8..60,400;8..60,500;8..60,600&family=IBM+Plex+Sans:wght@400;500;600&family=IBM+Plex+Mono:wght@400;500&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --ink: #12151C;
+    --ink-muted: #5B5F66;
+    --paper: #F5F6F3;
+    --paper-raise: #EFF0EC;
+    --gold: #8A6116;
+    --signal: #1B6E56;
+    --rule: #D8D6CC;
 
-        body {
-            font-family: 'Segoe UI', -apple-system, BlinkMacSystemFont, sans-serif;
-            color: var(--text);
-            background: var(--bg);
-            line-height: 1.6;
-        }
+    --serif: 'Source Serif 4', Georgia, serif;
+    --sans: 'IBM Plex Sans', -apple-system, sans-serif;
+    --mono: 'IBM Plex Mono', 'SF Mono', monospace;
+  }
 
-        /* Navigation */
-        nav {
-            position: sticky;
-            top: 0;
-            background: rgba(255, 255, 255, 0.95);
-            backdrop-filter: blur(10px);
-            border-bottom: 1px solid var(--border);
-            z-index: 1000;
-            padding: 1rem 2rem;
-        }
+  *{ margin:0; padding:0; box-sizing:border-box; }
 
-        .nav-container {
-            max-width: 1200px;
-            margin: 0 auto;
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-        }
+  html{ scroll-behavior:smooth; }
 
-        .logo {
-            font-size: 1.5em;
-            font-weight: 700;
-            color: var(--primary);
-            text-decoration: none;
-        }
+  body{
+    font-family: var(--sans);
+    background: var(--paper);
+    color: var(--ink);
+    line-height: 1.55;
+    -webkit-font-smoothing: antialiased;
+  }
 
-        .nav-links {
-            display: flex;
-            gap: 2rem;
-            list-style: none;
-        }
+  a{ color: inherit; text-decoration: none; }
 
-        .nav-links a {
-            text-decoration: none;
-            color: var(--text);
-            font-weight: 500;
-            transition: color 0.3s;
-        }
+  .wrap{ max-width: 1040px; margin: 0 auto; padding: 0 28px; }
 
-        .nav-links a:hover {
-            color: var(--primary);
-        }
+  :focus-visible{ outline: 2px solid var(--gold); outline-offset: 3px; }
 
-        /* Hero Section */
-        .hero {
-            background: linear-gradient(135deg, var(--primary) 0%, #003d99 100%);
-            color: white;
-            padding: 100px 2rem;
-            text-align: center;
-            position: relative;
-            overflow: hidden;
-        }
+  @media (prefers-reduced-motion: reduce){
+    *{ animation-duration: 0.01ms !important; transition-duration: 0.01ms !important; }
+  }
 
-        .hero::before {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: 0;
-            right: 0;
-            bottom: 0;
-            background: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 600"><defs><pattern id="dots" x="0" y="0" width="100" height="100" patternUnits="userSpaceOnUse"><circle cx="50" cy="50" r="2" fill="rgba(255,255,255,0.1)"/></pattern></defs><rect fill="%230052a3" width="1200" height="600"/><rect fill="url(%23dots)" width="1200" height="600"/></svg>');
-            opacity: 0.5;
-        }
+  /* ---------- Masthead ---------- */
+  header.masthead{
+    padding: 26px 0 22px;
+    border-bottom: 1px solid var(--rule);
+  }
+  header.masthead .wrap{
+    display:flex; justify-content:space-between; align-items:baseline; flex-wrap:wrap; gap:10px;
+  }
+  .brand{ font-family: var(--serif); font-size: 1.15rem; font-weight:600; letter-spacing:0.01em; }
+  nav.masthead-nav{ display:flex; gap:26px; font-size:0.95rem; }
+  nav.masthead-nav a{ color: var(--ink-muted); border-bottom: 1px solid transparent; padding-bottom: 3px; transition: color .15s, border-color .15s; }
+  nav.masthead-nav a:hover{ color: var(--ink); border-color: var(--rule); }
 
-        .hero-content {
-            max-width: 1000px;
-            margin: 0 auto;
-            position: relative;
-            z-index: 1;
-        }
+  /* ---------- Hero ---------- */
+  .hero{ padding: 64px 0 48px; }
+  .hero-grid{
+    display:grid; grid-template-columns: 1.05fr 0.95fr; gap: 56px; align-items:center;
+  }
+  .hero h1{
+    font-family: var(--serif);
+    font-weight: 600;
+    font-size: clamp(1.9rem, 3.4vw, 2.7rem);
+    line-height: 1.18;
+    letter-spacing: -0.005em;
+    max-width: 15ch;
+  }
+  .hero p.lede{
+    margin-top: 20px;
+    font-size: 1.05rem;
+    color: var(--ink-muted);
+    max-width: 46ch;
+  }
+  .hero-links{ margin-top: 28px; display:flex; gap: 28px; font-size: 0.98rem; }
+  .hero-links a{ border-bottom: 1px solid var(--ink); padding-bottom: 3px; transition: opacity .15s; }
+  .hero-links a:hover{ opacity: 0.6; }
 
-        .hero h1 {
-            font-size: 4rem;
-            font-weight: 800;
-            margin-bottom: 1rem;
-            text-shadow: 0 2px 10px rgba(0,0,0,0.2);
-        }
+  .chart-card{ }
+  .chart-caption{ font-size: 0.78rem; color: var(--ink-muted); margin-top: 10px; }
+  .chart-legend{ display:flex; gap:18px; font-size:0.82rem; color: var(--ink-muted); margin-bottom: 8px; }
+  .chart-legend span{ display:inline-flex; align-items:center; gap:6px; }
+  .swatch{ width:12px; height:2px; display:inline-block; }
 
-        .hero .tagline {
-            font-size: 1.5rem;
-            font-weight: 300;
-            margin-bottom: 2rem;
-            opacity: 0.95;
-        }
+  .readout{
+    margin-top: 14px;
+    display:grid; grid-template-columns: repeat(4, auto); gap: 22px;
+    border-top: 1px solid var(--rule);
+    padding-top: 12px;
+  }
+  .readout .num{ font-family: var(--mono); font-size: 1.05rem; font-weight:500; }
+  .readout .lbl{ font-size: 0.72rem; color: var(--ink-muted); margin-top: 2px; }
 
-        .hero-description {
-            font-size: 1.1rem;
-            margin-bottom: 2rem;
-            opacity: 0.9;
-            max-width: 600px;
-            margin-left: auto;
-            margin-right: auto;
-        }
+  /* ---------- Key figures strip ---------- */
+  .figures{
+    border-top: 1px solid var(--rule);
+    border-bottom: 1px solid var(--rule);
+    padding: 30px 0;
+  }
+  .figures .wrap{
+    display:grid; grid-template-columns: repeat(4, 1fr); gap: 24px;
+  }
+  .figure .num{ font-family: var(--mono); font-size: 1.9rem; font-weight:500; letter-spacing:-0.01em; }
+  .figure .lbl{ font-size: 0.85rem; color: var(--ink-muted); margin-top: 4px; }
 
-        .cta-button {
-            display: inline-block;
-            background: var(--secondary);
-            color: var(--dark);
-            padding: 15px 35px;
-            border-radius: 50px;
-            text-decoration: none;
-            font-weight: 600;
-            font-size: 1.1rem;
-            transition: all 0.3s;
-            box-shadow: 0 10px 30px rgba(0,0,0,0.2);
-        }
+  /* ---------- Projects ---------- */
+  .projects{ padding: 64px 0 40px; }
+  .section-head{ display:flex; justify-content:space-between; align-items:baseline; flex-wrap:wrap; gap:14px; margin-bottom: 28px; }
+  .section-head h2{ font-family: var(--serif); font-weight:600; font-size: 1.6rem; }
+  .section-head p{ color: var(--ink-muted); font-size: 0.95rem; }
 
-        .cta-button:hover {
-            transform: translateY(-3px);
-            box-shadow: 0 15px 40px rgba(0,0,0,0.3);
-        }
+  .filters{ display:flex; gap: 22px; flex-wrap:wrap; margin-bottom: 30px; font-size: 0.92rem; }
+  .filters button{
+    font-family: var(--sans); background:none; border:none; cursor:pointer;
+    color: var(--ink-muted); padding: 0 0 6px; border-bottom: 2px solid transparent;
+  }
+  .filters button:hover{ color: var(--ink); }
+  .filters button.active{ color: var(--ink); border-color: var(--gold); }
 
-        /* Stats Section */
-        .stats {
-            background: var(--bg-light);
-            padding: 4rem 2rem;
-        }
+  .proj-row{
+    display:grid;
+    grid-template-columns: 76px 1fr 190px;
+    gap: 22px;
+    padding: 22px 0;
+    border-top: 1px solid var(--rule);
+    align-items: start;
+  }
+  .projects .proj-list{ border-bottom: 1px solid var(--rule); }
 
-        .container {
-            max-width: 1200px;
-            margin: 0 auto;
-        }
+  .ticker{
+    font-family: var(--mono); font-weight: 500; font-size: 0.85rem;
+    border: 1px solid var(--ink); display:inline-flex; align-items:center; gap:6px;
+    padding: 5px 8px; height: fit-content; white-space:nowrap;
+    justify-self: start;
+  }
+  .ticker .dot{ width:6px; height:6px; border-radius:50%; background: var(--signal); flex:none; }
 
-        .stats-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-            gap: 2rem;
-            margin-top: 2rem;
-        }
+  .proj-title{ font-family: var(--serif); font-weight:600; font-size: 1.12rem; }
+  .proj-desc{ margin-top: 6px; color: var(--ink-muted); font-size: 0.94rem; max-width: 56ch; }
+  .proj-links{ margin-top: 12px; display:flex; gap: 18px; font-size: 0.88rem; }
+  .proj-links a{ border-bottom: 1px solid var(--rule); padding-bottom:2px; transition: border-color .15s, color .15s; }
+  .proj-links a:hover{ border-color: var(--ink); }
+  .proj-links a.live{ color: var(--signal); border-color: rgba(27,110,86,0.35); }
+  .proj-links a.live:hover{ border-color: var(--signal); }
 
-        .stat-card {
-            background: white;
-            padding: 2rem;
-            border-radius: 12px;
-            text-align: center;
-            border: 1px solid var(--border);
-            transition: all 0.3s;
-            box-shadow: 0 2px 10px rgba(0,0,0,0.05);
-        }
+  .proj-meta{ text-align:right; }
+  .proj-cat{ font-size: 0.82rem; color: var(--ink-muted); }
+  .proj-metric{ font-family: var(--mono); font-size: 0.92rem; margin-top: 8px; }
 
-        .stat-card:hover {
-            transform: translateY(-5px);
-            box-shadow: 0 10px 30px rgba(0,0,0,0.1);
-            border-color: var(--primary);
-        }
+  @media (max-width: 720px){
+    .proj-row{ grid-template-columns: 1fr; gap: 10px; }
+    .proj-meta{ text-align:left; }
+    .proj-meta{ display:flex; gap:16px; align-items:center; }
+    .proj-metric{ margin-top:0; }
+  }
 
-        .stat-value {
-            font-size: 2.5rem;
-            font-weight: 800;
-            color: var(--primary);
-            margin-bottom: 0.5rem;
-        }
+  /* ---------- Contact ---------- */
+  .contact{ padding: 56px 0 64px; border-top: 1px solid var(--rule); }
+  .contact h2{ font-family: var(--serif); font-weight:600; font-size: 1.5rem; max-width: 24ch; }
+  .contact p{ margin-top: 14px; color: var(--ink-muted); max-width: 50ch; }
+  .contact-links{ margin-top: 22px; display:flex; gap: 28px; flex-wrap:wrap; font-size: 1rem; }
+  .contact-links a{ border-bottom: 1px solid var(--ink); padding-bottom:3px; transition: opacity .15s; }
+  .contact-links a:hover{ opacity:0.6; }
 
-        .stat-label {
-            color: var(--text-light);
-            font-size: 0.95rem;
-            font-weight: 500;
-        }
+  footer{ padding: 24px 0 40px; color: var(--ink-muted); font-size: 0.82rem; }
 
-        /* Projects Section */
-        .projects {
-            padding: 5rem 2rem;
-        }
-
-        .section-title {
-            font-size: 2.5rem;
-            font-weight: 800;
-            margin-bottom: 1rem;
-            color: var(--dark);
-        }
-
-        .section-subtitle {
-            color: var(--text-light);
-            font-size: 1.1rem;
-            margin-bottom: 3rem;
-        }
-
-        .project-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fill, minmax(340px, 1fr));
-            gap: 2rem;
-        }
-
-        .project-card {
-            background: white;
-            border: 1px solid var(--border);
-            border-radius: 12px;
-            overflow: hidden;
-            transition: all 0.3s;
-            display: flex;
-            flex-direction: column;
-            box-shadow: 0 2px 10px rgba(0,0,0,0.05);
-        }
-
-        .project-card:hover {
-            transform: translateY(-8px);
-            box-shadow: 0 15px 40px rgba(0,0,0,0.12);
-            border-color: var(--primary);
-        }
-
-        .project-header {
-            padding: 2rem;
-            background: linear-gradient(135deg, var(--primary-light) 0%, #e6f7ff 100%);
-            border-bottom: 2px solid var(--primary);
-        }
-
-        .project-icon {
-            font-size: 2.5rem;
-            margin-bottom: 1rem;
-        }
-
-        .project-title {
-            font-size: 1.3rem;
-            font-weight: 700;
-            color: var(--primary);
-            margin-bottom: 0.5rem;
-        }
-
-        .project-content {
-            padding: 1.5rem 2rem;
-            flex-grow: 1;
-            display: flex;
-            flex-direction: column;
-        }
-
-        .project-description {
-            color: var(--text-light);
-            margin-bottom: 1.5rem;
-            font-size: 0.95rem;
-            line-height: 1.6;
-        }
-
-        .tech-stack {
-            display: flex;
-            flex-wrap: wrap;
-            gap: 0.5rem;
-            margin: 1.5rem 0;
-        }
-
-        .tech-badge {
-            background: var(--primary-light);
-            color: var(--primary);
-            padding: 0.4rem 0.8rem;
-            border-radius: 20px;
-            font-size: 0.8rem;
-            font-weight: 600;
-        }
-
-        .project-link {
-            display: inline-flex;
-            align-items: center;
-            gap: 0.5rem;
-            color: var(--primary);
-            text-decoration: none;
-            font-weight: 600;
-            transition: all 0.3s;
-            margin-top: auto;
-        }
-
-        .project-link:hover {
-            gap: 1rem;
-            color: var(--primary-dark);
-        }
-
-        /* Contact Section */
-        .contact {
-            background: linear-gradient(135deg, var(--primary) 0%, #003d99 100%);
-            color: white;
-            padding: 5rem 2rem;
-            text-align: center;
-        }
-
-        .contact h2 {
-            font-size: 2.5rem;
-            font-weight: 800;
-            margin-bottom: 1rem;
-        }
-
-        .contact-description {
-            font-size: 1.1rem;
-            margin-bottom: 2rem;
-            opacity: 0.95;
-            max-width: 600px;
-            margin-left: auto;
-            margin-right: auto;
-        }
-
-        .contact-buttons {
-            display: flex;
-            gap: 1rem;
-            justify-content: center;
-            flex-wrap: wrap;
-            margin-bottom: 2rem;
-        }
-
-        .contact-btn {
-            display: inline-block;
-            padding: 12px 28px;
-            border-radius: 50px;
-            text-decoration: none;
-            font-weight: 600;
-            transition: all 0.3s;
-            border: 2px solid white;
-            color: white;
-        }
-
-        .contact-btn.primary {
-            background: white;
-            color: var(--primary);
-        }
-
-        .contact-btn.primary:hover {
-            transform: translateY(-2px);
-            box-shadow: 0 10px 25px rgba(0,0,0,0.2);
-        }
-
-        .contact-btn.secondary {
-            background: transparent;
-        }
-
-        .contact-btn.secondary:hover {
-            background: rgba(255,255,255,0.1);
-        }
-
-        .contact-info {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-            gap: 2rem;
-            margin-top: 3rem;
-            text-align: left;
-        }
-
-        .info-item {
-            background: rgba(255,255,255,0.1);
-            padding: 1.5rem;
-            border-radius: 10px;
-            backdrop-filter: blur(10px);
-        }
-
-        .info-label {
-            font-weight: 600;
-            margin-bottom: 0.5rem;
-            opacity: 0.9;
-        }
-
-        .info-value {
-            font-size: 1rem;
-            opacity: 0.95;
-        }
-
-        .info-value a {
-            color: white;
-            text-decoration: none;
-            transition: opacity 0.3s;
-        }
-
-        .info-value a:hover {
-            opacity: 0.8;
-            text-decoration: underline;
-        }
-
-        /* Footer */
-        footer {
-            background: var(--dark);
-            color: white;
-            text-align: center;
-            padding: 2rem;
-            font-size: 0.9rem;
-            opacity: 0.8;
-        }
-
-        /* Responsive */
-        @media (max-width: 768px) {
-            .hero h1 {
-                font-size: 2.5rem;
-            }
-
-            .hero .tagline {
-                font-size: 1.2rem;
-            }
-
-            .section-title {
-                font-size: 2rem;
-            }
-
-            .nav-links {
-                gap: 1rem;
-                font-size: 0.9rem;
-            }
-
-            .contact h2 {
-                font-size: 2rem;
-            }
-        }
-    </style>
+  @media (max-width: 780px){
+    .hero-grid{ grid-template-columns: 1fr; gap: 34px; }
+    .figures .wrap{ grid-template-columns: repeat(2, 1fr); row-gap: 22px; }
+    .readout{ grid-template-columns: repeat(4, auto); overflow-x:auto; }
+  }
+</style>
 </head>
 <body>
-    <!-- Navigation -->
-    <nav>
-        <div class="nav-container">
-            <a href="#" class="logo">Omar Ja</a>
-            <ul class="nav-links">
-                <li><a href="#projects">Projects</a></li>
-                <li><a href="#contact">Contact</a></li>
-            </ul>
-        </div>
+
+<header class="masthead">
+  <div class="wrap">
+    <span class="brand">Omar Ja</span>
+    <nav class="masthead-nav">
+      <a href="#projects">Projects</a>
+      <a href="#contact">Contact</a>
     </nav>
+  </div>
+</header>
 
-    <!-- Hero -->
-    <section class="hero">
-        <div class="hero-content">
-            <h1>Omar Ja</h1>
-            <p class="tagline">Data Science & Quantitative Finance</p>
-            <p class="hero-description">Building powerful analytics, machine learning, and quantitative trading solutions</p>
-            <a href="#projects" class="cta-button">Explore My Work</a>
-        </div>
-    </section>
+<section class="hero">
+  <div class="wrap hero-grid">
+    <div>
+      <h1>Quantitative research and machine learning, shipped as working software.</h1>
+      <p class="lede">I build trading models, pricing tools, and applied ML systems. Most of the projects below are live and clickable — proof, not slides.</p>
+      <div class="hero-links">
+        <a href="mailto:jarir.omar@hotmail.fr">Email me</a>
+        <a href="https://github.com/omarja12" target="_blank" rel="noopener">GitHub</a>
+      </div>
+    </div>
 
-    <!-- Stats -->
-    <section class="stats">
-        <div class="container">
-            <div class="stats-grid">
-                <div class="stat-card">
-                    <div class="stat-value">12.8%</div>
-                    <div class="stat-label">CAGR - Momentum Strategy</div>
-                </div>
-                <div class="stat-card">
-                    <div class="stat-value">1.42</div>
-                    <div class="stat-label">Sharpe Ratio</div>
-                </div>
-                <div class="stat-card">
-                    <div class="stat-value">8+</div>
-                    <div class="stat-label">Projects Completed</div>
-                </div>
-                <div class="stat-card">
-                    <div class="stat-value">Full Stack</div>
-                    <div class="stat-label">Technical Skills</div>
-                </div>
+    <div class="chart-card">
+      <div class="chart-legend">
+        <span><span class="swatch" style="background:var(--ink)"></span>Momentum strategy</span>
+        <span><span class="swatch" style="background:var(--rule)"></span>S&amp;P 500 (SPY)</span>
+      </div>
+      <svg viewBox="0 0 600 220" width="100%" height="auto" role="img" aria-label="Illustrative cumulative growth of the momentum strategy versus SPY over five years">
+        <polyline points="4,185.1 13.9,187.6 23.7,186.5 33.6,193.8 43.5,197.2 53.3,197.5 63.2,188.8 73.1,187.7 82.9,194.7 92.8,195.7 102.7,210 112.5,205 122.4,197.8 132.3,187.7 142.1,183.1 152,174.5 161.9,166 171.7,160.6 181.6,166.3 191.5,149.3 201.3,151.8 211.2,155.2 221.1,155.8 230.9,149.9 240.8,144.8 250.7,144.4 260.5,149.2 270.4,148.1 280.3,143 290.1,141.9 300,137.3 309.9,120.3 319.7,126.9 329.6,118.2 339.5,117.8 349.3,114.8 359.2,108.8 369.1,101.7 378.9,82.6 388.8,71.4 398.7,76.8 408.5,82.8 418.4,80.5 428.3,88.6 438.1,86.4 448,81.9 457.9,88 467.7,74.4 477.6,73.1 487.5,64.4 497.3,78.6 507.2,71.2 517.1,66.4 526.9,64.5 536.8,72.9 546.7,77.8 556.5,70.7 566.4,60.7 576.3,53.2 586.1,40.9 596,39.9"
+          fill="none" stroke="var(--rule)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+        <polyline points="4,185.1 13.9,173.9 23.7,172.8 33.6,175 43.5,173.4 53.3,172.5 63.2,167.6 73.1,169.1 82.9,172.4 92.8,176.9 102.7,169.8 112.5,163.8 122.4,157.9 132.3,158.4 142.1,156.6 152,147.2 161.9,149 171.7,143.9 181.6,138.7 191.5,134.5 201.3,138.1 211.2,130.8 221.1,128.1 230.9,132.2 240.8,125.4 250.7,125.2 260.5,127.8 270.4,120.1 280.3,119.3 290.1,123.4 300,115.1 309.9,109.7 319.7,105.5 329.6,99.7 339.5,108.2 349.3,102.9 359.2,100.4 369.1,93.6 378.9,93 388.8,87.9 398.7,88.8 408.5,91 418.4,85.2 428.3,80.8 438.1,83.3 448,85.3 457.9,82.7 467.7,64.7 477.6,61.7 487.5,54.2 497.3,56.8 507.2,50 517.1,38.5 526.9,34.4 536.8,29.3 546.7,14.7 556.5,19.3 566.4,26.7 576.3,20.2 586.1,18.2 596,10"
+          fill="none" stroke="var(--ink)" stroke-width="2.25" stroke-linecap="round" stroke-linejoin="round"/>
+      </svg>
+      <p class="chart-caption">Illustrative — shape calibrated to the backtest's reported CAGR and volatility, not raw tick data.</p>
+      <div class="readout">
+        <div><div class="num">12.8%</div><div class="lbl">CAGR</div></div>
+        <div><div class="num">1.42</div><div class="lbl">Sharpe</div></div>
+        <div><div class="num">−18.3%</div><div class="lbl">Max drawdown</div></div>
+        <div><div class="num">58%</div><div class="lbl">Win rate</div></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="figures">
+  <div class="wrap">
+    <div class="figure"><div class="num">8</div><div class="lbl">Projects below</div></div>
+    <div class="figure"><div class="num">5</div><div class="lbl">Live, deployed demos</div></div>
+    <div class="figure"><div class="num">2019–24</div><div class="lbl">Flagship backtest window</div></div>
+    <div class="figure"><div class="num">5</div><div class="lbl">Areas covered</div></div>
+  </div>
+</section>
+
+<section class="projects" id="projects">
+  <div class="wrap">
+    <div class="section-head">
+      <h2>Projects</h2>
+      <p>Every "live" link below opens a working deployment, not a screenshot.</p>
+    </div>
+
+    <div class="filters" id="filters">
+      <button data-cat="all" class="active" aria-pressed="true">All</button>
+      <button data-cat="quant" aria-pressed="false">Quantitative finance</button>
+      <button data-cat="ml" aria-pressed="false">Machine learning</button>
+      <button data-cat="optimization" aria-pressed="false">Optimization</button>
+      <button data-cat="blockchain" aria-pressed="false">Blockchain</button>
+      <button data-cat="nlp" aria-pressed="false">NLP &amp; data</button>
+    </div>
+
+    <div class="proj-list" id="proj-list"></div>
+  </div>
+</section>
+
+<section class="contact" id="contact">
+  <div class="wrap">
+    <h2>Open to freelance and contract work.</h2>
+    <p>Quantitative research, financial modeling, or applied ML — if it involves turning a model into something that actually runs, I'm interested.</p>
+    <div class="contact-links">
+      <a href="mailto:jarir.omar@hotmail.fr">jarir.omar@hotmail.fr</a>
+      <a href="https://github.com/omarja12" target="_blank" rel="noopener">github.com/omarja12</a>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <div class="wrap"><span id="year"></span> Omar Ja.</div>
+</footer>
+
+<script>
+  document.getElementById('year').textContent = '© ' + new Date().getFullYear();
+
+  const projects = [
+    {
+      ticker: 'MOM', title: 'Equity Momentum Strategy', cat: 'quant', catLabel: 'Quantitative finance',
+      desc: 'Six-month cross-sectional momentum, long-short across S&P 500 constituents, rebalanced monthly.',
+      metric: '12.8% CAGR', code: 'https://github.com/omarja12/Momentum-Backtest', live: null
+    },
+    {
+      ticker: 'YLD', title: 'Bootstrap Yield Curve', cat: 'quant', catLabel: 'Quantitative finance',
+      desc: 'Three classical methods for building a zero-coupon curve from bond prices: linear, cubic spline, and Nelson-Siegel.',
+      metric: '3 methods compared', code: 'https://github.com/omarja12/Bootstrap-Yield-Curve', live: 'https://omarja12.github.io/Bootstrap-Yield-Curve/'
+    },
+    {
+      ticker: 'NSS', title: 'Nelson-Siegel-Svensson Calibration', cat: 'quant', catLabel: 'Quantitative finance',
+      desc: 'Five-parameter yield curve model — level, slope, curvature, hump — calibrated to observed market data.',
+      metric: '5-parameter model', code: 'https://github.com/omarja12/Nelson-Siegel-Svensson-parameters-estimations', live: 'https://omarja12.github.io/Nelson-Siegel-Svensson-parameters-estimations/'
+    },
+    {
+      ticker: 'CLU', title: 'Insurance Customer Clustering', cat: 'ml', catLabel: 'Machine learning',
+      desc: 'Segments 50,000+ policyholders with five clustering methods, compared on silhouette score, for pricing and retention.',
+      metric: '50k+ customers', code: 'https://github.com/omarja12/Insurance_Company_Customers_Clustering', live: null
+    },
+    {
+      ticker: 'TSP', title: 'Genetic Algorithm for TSP', cat: 'optimization', catLabel: 'Optimization',
+      desc: 'Evolutionary search — tournament selection, crossover, mutation — for the traveling salesman problem.',
+      metric: 'NP-hard problem', code: 'https://github.com/omarja12/Genetic_Algorithm_TSP', live: 'https://omarja12.github.io/Genetic_Algorithm_TSP/'
+    },
+    {
+      ticker: 'INS', title: 'Insurtech Smart Contract', cat: 'blockchain', catLabel: 'Blockchain',
+      desc: 'Ethereum contract for insurance claims: KYC verification, role-based access control, on-chain settlement.',
+      metric: 'Solidity / Ethereum', code: 'https://github.com/omarja12/Fintech-Inssurtech-Project', live: 'https://omarja12.github.io/Fintech-Inssurtech-Project/'
+    },
+    {
+      ticker: 'OCR', title: 'Arabic OCR Synthetic Generator', cat: 'nlp', catLabel: 'NLP & data',
+      desc: 'Renders labeled training images across 432 Arabic fonts, weighted toward historic scripts, with RTL-safe text shaping.',
+      metric: '432 fonts', code: 'https://github.com/omarja12/ocr_arabic_generator', live: 'https://omarja12.github.io/ocr_arabic_generator/'
+    },
+    {
+      ticker: 'PLY', title: 'Polyglot Transcribe', cat: 'nlp', catLabel: 'NLP & data',
+      desc: 'Near real-time speech-to-text with one-click AI-generated reports, in French, Arabic, and English.',
+      metric: '3 languages', code: 'https://github.com/omarja12/polyglot-transcribe', live: null
+    }
+  ];
+
+  function render(filter){
+    const list = document.getElementById('proj-list');
+    list.innerHTML = '';
+    projects
+      .filter(p => filter === 'all' || p.cat === filter)
+      .forEach(p => {
+        const row = document.createElement('div');
+        row.className = 'proj-row';
+        row.innerHTML = `
+          <div class="ticker">${p.live ? '<span class="dot"></span>' : ''}${p.ticker}</div>
+          <div>
+            <div class="proj-title">${p.title}</div>
+            <div class="proj-desc">${p.desc}</div>
+            <div class="proj-links">
+              <a href="${p.code}" target="_blank" rel="noopener">View code</a>
+              ${p.live ? `<a class="live" href="${p.live}" target="_blank" rel="noopener">View live demo</a>` : ''}
             </div>
-        </div>
-    </section>
+          </div>
+          <div class="proj-meta">
+            <div class="proj-cat">${p.catLabel}</div>
+            <div class="proj-metric">${p.metric}</div>
+          </div>`;
+        list.appendChild(row);
+      });
+  }
 
-    <!-- Projects -->
-    <section class="projects" id="projects">
-        <div class="container">
-            <h2 class="section-title">Featured Projects</h2>
-            <p class="section-subtitle">A selection of my best work in quantitative finance and machine learning</p>
-            
-            <div class="project-grid">
-                <div class="project-card">
-                    <div class="project-header">
-                        <div class="project-icon">📈</div>
-                        <h3 class="project-title">Equity Momentum Strategy</h3>
-                    </div>
-                    <div class="project-content">
-                        <p class="project-description">Advanced 6-month momentum strategy on S&P 500 with 12.8% CAGR and 1.42 Sharpe ratio</p>
-                        <div class="tech-stack">
-                            <span class="tech-badge">Python</span>
-                            <span class="tech-badge">Backtest</span>
-                            <span class="tech-badge">Quant</span>
-                        </div>
-                        <a href="https://github.com/omarja12/Momentum-Backtest" target="_blank" class="project-link">View Code →</a>
-                    </div>
-                </div>
+  document.getElementById('filters').addEventListener('click', e => {
+    const btn = e.target.closest('button');
+    if(!btn) return;
+    document.querySelectorAll('#filters button').forEach(b => {
+      b.classList.remove('active');
+      b.setAttribute('aria-pressed', 'false');
+    });
+    btn.classList.add('active');
+    btn.setAttribute('aria-pressed', 'true');
+    render(btn.dataset.cat);
+  });
 
-                <div class="project-card">
-                    <div class="project-header">
-                        <div class="project-icon">📊</div>
-                        <h3 class="project-title">Bootstrap Yield Curve</h3>
-                    </div>
-                    <div class="project-content">
-                        <p class="project-description">Three robust methods for constructing and pricing yield curves</p>
-                        <div class="tech-stack">
-                            <span class="tech-badge">Finance</span>
-                            <span class="tech-badge">Fixed Income</span>
-                            <span class="tech-badge">Python</span>
-                        </div>
-                        <a href="https://github.com/omarja12/Bootstrap-Yield-Curve" target="_blank" class="project-link">View Code →</a>
-                    </div>
-                </div>
+  render('all');
+</script>
 
-                <div class="project-card">
-                    <div class="project-header">
-                        <div class="project-icon">📈</div>
-                        <h3 class="project-title">Nelson-Siegel-Svensson</h3>
-                    </div>
-                    <div class="project-content">
-                        <p class="project-description">5-parameter model for interest rate curve estimation</p>
-                        <div class="tech-stack">
-                            <span class="tech-badge">Quant</span>
-                            <span class="tech-badge">Calibration</span>
-                            <span class="tech-badge">Python</span>
-                        </div>
-                        <a href="https://github.com/omarja12/Nelson-Siegel-Svensson-parameters-estimations" target="_blank" class="project-link">View Code →</a>
-                    </div>
-                </div>
-
-                <div class="project-card">
-                    <div class="project-header">
-                        <div class="project-icon">👥</div>
-                        <h3 class="project-title">Customer Clustering</h3>
-                    </div>
-                    <div class="project-content">
-                        <p class="project-description">Advanced segmentation using 5 clustering algorithms</p>
-                        <div class="tech-stack">
-                            <span class="tech-badge">ML</span>
-                            <span class="tech-badge">Clustering</span>
-                            <span class="tech-badge">Python</span>
-                        </div>
-                        <a href="https://github.com/omarja12/Insurance_Company_Customers_Clustering" target="_blank" class="project-link">View Code →</a>
-                    </div>
-                </div>
-
-                <div class="project-card">
-                    <div class="project-header">
-                        <div class="project-icon">🩺</div>
-                        <h3 class="project-title">Pneumonia Detection</h3>
-                    </div>
-                    <div class="project-content">
-                        <p class="project-description">Deep learning model for chest X-ray classification</p>
-                        <div class="tech-stack">
-                            <span class="tech-badge">Computer Vision</span>
-                            <span class="tech-badge">Deep Learning</span>
-                            <span class="tech-badge">TensorFlow</span>
-                        </div>
-                        <a href="https://github.com/omarja12/Pneumonia-Detection" target="_blank" class="project-link">View Code →</a>
-                    </div>
-                </div>
-
-                <div class="project-card">
-                    <div class="project-header">
-                        <div class="project-icon">🧬</div>
-                        <h3 class="project-title">Genetic Algorithm TSP</h3>
-                    </div>
-                    <div class="project-content">
-                        <p class="project-description">Optimization solution for Traveling Salesman Problem</p>
-                        <div class="tech-stack">
-                            <span class="tech-badge">Optimization</span>
-                            <span class="tech-badge">Algorithms</span>
-                            <span class="tech-badge">Python</span>
-                        </div>
-                        <a href="https://github.com/omarja12/Genetic_Algorithm_TSP" target="_blank" class="project-link">View Code →</a>
-                    </div>
-                </div>
-
-                <div class="project-card">
-                    <div class="project-header">
-                        <div class="project-icon">💬</div>
-                        <h3 class="project-title">NLP Sentiment Analysis</h3>
-                    </div>
-                    <div class="project-content">
-                        <p class="project-description">Text classification with 88% accuracy</p>
-                        <div class="tech-stack">
-                            <span class="tech-badge">NLP</span>
-                            <span class="tech-badge">ML</span>
-                            <span class="tech-badge">Python</span>
-                        </div>
-                        <a href="https://github.com/omarja12/NLP-Sentiment-Analysis" target="_blank" class="project-link">View Code →</a>
-                    </div>
-                </div>
-
-                <div class="project-card">
-                    <div class="project-header">
-                        <div class="project-icon">⛓️</div>
-                        <h3 class="project-title">Fintech Smart Contracts</h3>
-                    </div>
-                    <div class="project-content">
-                        <p class="project-description">Blockchain implementation for financial transactions</p>
-                        <div class="tech-stack">
-                            <span class="tech-badge">Blockchain</span>
-                            <span class="tech-badge">Smart Contracts</span>
-                            <span class="tech-badge">Web3</span>
-                        </div>
-                        <a href="https://github.com/omarja12/Fintech-Inssurtech-Project" target="_blank" class="project-link">View Code →</a>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- Contact -->
-    <section class="contact" id="contact">
-        <div class="container">
-            <h2>Let's Work Together</h2>
-            <p class="contact-description">Interested in collaborating? Let's discuss opportunities in quantitative finance, machine learning, or data science.</p>
-            
-            <div class="contact-buttons">
-                <a href="mailto:jarir.omar@hotmail.fr" class="contact-btn primary">📧 Send Email</a>
-                <a href="https://github.com/omarja12" target="_blank" class="contact-btn secondary">GitHub Profile</a>
-            </div>
-
-            <div class="contact-info">
-                <div class="info-item">
-                    <div class="info-label">📧 Email</div>
-                    <div class="info-value"><a href="mailto:jarir.omar@hotmail.fr">jarir.omar@hotmail.fr</a></div>
-                </div>
-                <div class="info-item">
-                    <div class="info-label">💻 GitHub</div>
-                    <div class="info-value"><a href="https://github.com/omarja12" target="_blank">github.com/omarja12</a></div>
-                </div>
-                <div class="info-item">
-                    <div class="info-label">🔍 Focus</div>
-                    <div class="info-value">Quant Finance • ML • Data Science</div>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- Footer -->
-    <footer>
-        <p>&copy; 2024 Omar Ja. All rights reserved.</p>
-    </footer>
 </body>
 </html>
