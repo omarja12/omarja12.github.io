@@ -31,3 +31,15 @@ See PORTFOLIO_UPDATE_GUIDE.md for quick examples.
 
 - GitHub: https://github.com/omarja12
 - Momentum Backtest: https://github.com/omarja12/Momentum-Backtest
+
+---
+
+## Get in Touch
+
+Want to collaborate on quantitative finance, machine learning, or data science projects?
+
+**Email:** jarir.omar@hotmail.fr  
+**GitHub:** https://github.com/omarja12  
+**Portfolio:** https://omarja12.github.io
+
+Available for freelance and side projects.
