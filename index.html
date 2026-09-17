@@ -280,7 +280,7 @@
     {
       ticker: 'VOL', title: 'Crypto Volatility Surface', cat: 'quant', catLabel: 'Quantitative finance',
       desc: 'Arbitrage-free SVI/SSVI calibration on Deribit options. Staged so each layer validates the one beneath it — forward extraction first, because it proves the data before anything is built on top of it.',
-      metric: 'Durrleman-gated', code: null, live: null
+      metric: 'Durrleman-gated', code: 'https://github.com/omarja12/crypto-vol-lab', live: null
     },
     {
       ticker: 'CRV', title: 'Curve and Portfolio', cat: 'quant', catLabel: 'Quantitative finance',
@@ -296,11 +296,6 @@
       ticker: 'YLD', title: 'Bootstrap Yield Curve', cat: 'quant', catLabel: 'Quantitative finance',
       desc: 'Discount factors from ten coupon bonds three ways — matrix solve, global optimiser, and forward substitution done by hand. They agree to within one bit of machine epsilon.',
       metric: 'Agreement to 3.3e-16', code: 'https://github.com/omarja12/Bootstrap-Yield-Curve', live: 'https://omarja12.github.io/Bootstrap-Yield-Curve/'
-    },
-    {
-      ticker: 'MOM', title: 'Equity Momentum Strategy', cat: 'quant', catLabel: 'Quantitative finance',
-      desc: 'Six-month cross-sectional momentum, long-short over a mega-cap subset, rebalanced monthly, with a walk-forward structure across market regimes.',
-      metric: 'Long-short, monthly', code: 'https://github.com/omarja12/Momentum-Backtest', live: null
     },
     {
       ticker: 'NSS', title: 'Nelson-Siegel-Svensson Calibration', cat: 'quant', catLabel: 'Quantitative finance',
