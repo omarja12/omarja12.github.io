@@ -60,16 +60,14 @@
 
   /* ---------- Hero ---------- */
   .hero{ padding: 64px 0 48px; }
-  .hero-grid{
-    display:grid; grid-template-columns: 1.05fr 0.95fr; gap: 56px; align-items:center;
-  }
+  .hero-grid{ display:block; }
   .hero h1{
     font-family: var(--serif);
     font-weight: 600;
     font-size: clamp(1.9rem, 3.4vw, 2.7rem);
     line-height: 1.18;
     letter-spacing: -0.005em;
-    max-width: 15ch;
+    max-width: 24ch;
   }
   .hero p.lede{
     margin-top: 20px;
@@ -80,23 +78,6 @@
   .hero-links{ margin-top: 28px; display:flex; gap: 28px; font-size: 0.98rem; }
   .hero-links a{ border-bottom: 1px solid var(--ink); padding-bottom: 3px; transition: opacity .15s; }
   .hero-links a:hover{ opacity: 0.6; }
-
-  .chart-card{ }
-  .chart-caption{ font-size: 0.78rem; color: var(--ink-muted); margin-top: 10px; }
-  .chart-caption a{ color: var(--gold); border-bottom: 1px solid rgba(138,97,22,0.35); padding-bottom:1px; white-space:nowrap; }
-  .chart-caption a:hover{ border-color: var(--gold); }
-  .chart-legend{ display:flex; gap:18px; font-size:0.82rem; color: var(--ink-muted); margin-bottom: 8px; }
-  .chart-legend span{ display:inline-flex; align-items:center; gap:6px; }
-  .swatch{ width:12px; height:2px; display:inline-block; }
-
-  .readout{
-    margin-top: 14px;
-    display:grid; grid-template-columns: repeat(4, auto); gap: 22px;
-    border-top: 1px solid var(--rule);
-    padding-top: 12px;
-  }
-  .readout .num{ font-family: var(--mono); font-size: 1.05rem; font-weight:500; }
-  .readout .lbl{ font-size: 0.72rem; color: var(--ink-muted); margin-top: 2px; }
 
   /* ---------- Key figures strip ---------- */
   .figures{
@@ -173,9 +154,7 @@
   footer{ padding: 24px 0 40px; color: var(--ink-muted); font-size: 0.82rem; }
 
   @media (max-width: 780px){
-    .hero-grid{ grid-template-columns: 1fr; gap: 34px; }
     .figures .wrap{ grid-template-columns: repeat(2, 1fr); row-gap: 22px; }
-    .readout{ grid-template-columns: repeat(4, auto); overflow-x:auto; }
   }
 </style>
 </head>
@@ -199,26 +178,6 @@
       <div class="hero-links">
         <a href="mailto:jarir.omar@hotmail.fr">Email me</a>
         <a href="https://github.com/omarja12" target="_blank" rel="noopener">GitHub</a>
-      </div>
-    </div>
-
-    <div class="chart-card">
-      <div class="chart-legend">
-        <span><span class="swatch" style="background:var(--ink)"></span>Spot rate</span>
-        <span><span class="swatch" style="background:var(--rule)"></span>1y forward rate</span>
-      </div>
-      <svg viewBox="0 0 600 220" width="100%" height="auto" role="img" aria-label="Bootstrapped spot rate curve and one-year forward curve, maturities one to ten years">
-        <polyline points="28.0,33.5 97.5,41.8 167.0,58.7 236.5,79.0 306.0,101.7 375.5,124.4 445.0,145.1 514.5,165.1 584.0,182.5"
-          fill="none" stroke="var(--rule)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
-        <polyline points="28.0,40.0 89.8,36.8 151.6,38.4 213.3,43.5 275.1,50.6 336.9,59.2 398.7,68.5 460.4,78.2 522.2,87.9 584.0,97.4"
-          fill="none" stroke="var(--ink)" stroke-width="2.25" stroke-linecap="round" stroke-linejoin="round"/>
-      </svg>
-      <p class="chart-caption">Real output — spot and one-year forward rates bootstrapped from ten Treasury bonds. One project of twelve below; <a href="https://omarja12.github.io/Bootstrap-Yield-Curve/">read how it is built &rarr;</a></p>
-      <div class="readout">
-        <div><div class="num">5.14%</div><div class="lbl">Spot peak, yr 2</div></div>
-        <div><div class="num">3.87%</div><div class="lbl">Spot, 10y</div></div>
-        <div><div class="num">2.08%</div><div class="lbl">Forward, 9y</div></div>
-        <div><div class="num">3.3e-16</div><div class="lbl">Method agreement</div></div>
       </div>
     </div>
   </div>
