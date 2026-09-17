@@ -83,6 +83,8 @@
 
   .chart-card{ }
   .chart-caption{ font-size: 0.78rem; color: var(--ink-muted); margin-top: 10px; }
+  .chart-caption a{ color: var(--gold); border-bottom: 1px solid rgba(138,97,22,0.35); padding-bottom:1px; white-space:nowrap; }
+  .chart-caption a:hover{ border-color: var(--gold); }
   .chart-legend{ display:flex; gap:18px; font-size:0.82rem; color: var(--ink-muted); margin-bottom: 8px; }
   .chart-legend span{ display:inline-flex; align-items:center; gap:6px; }
   .swatch{ width:12px; height:2px; display:inline-block; }
@@ -211,7 +213,7 @@
         <polyline points="28.0,40.0 89.8,36.8 151.6,38.4 213.3,43.5 275.1,50.6 336.9,59.2 398.7,68.5 460.4,78.2 522.2,87.9 584.0,97.4"
           fill="none" stroke="var(--ink)" stroke-width="2.25" stroke-linecap="round" stroke-linejoin="round"/>
       </svg>
-      <p class="chart-caption">Real output — spot and one-year forward rates bootstrapped from ten Treasury bonds. Reproducible from the code.</p>
+      <p class="chart-caption">Real output — spot and one-year forward rates bootstrapped from ten Treasury bonds. One project of twelve below; <a href="https://omarja12.github.io/Bootstrap-Yield-Curve/">read how it is built &rarr;</a></p>
       <div class="readout">
         <div><div class="num">5.14%</div><div class="lbl">Spot peak, yr 2</div></div>
         <div><div class="num">3.87%</div><div class="lbl">Spot, 10y</div></div>
