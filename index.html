@@ -278,6 +278,16 @@
 
   const projects = [
     {
+      ticker: 'PDE', title: 'Black-Scholes by Four Schemes', cat: 'quant', catLabel: 'Quantitative finance',
+      desc: 'Lattices, finite differences, finite elements and Monte Carlo in C++20. Every convergence rate is measured rather than asserted — including the Crank-Nicolson order loss that Rannacher start-up fixes.',
+      metric: 'Orders verified', code: 'https://github.com/omarja12/convergence-lab', live: 'https://omarja12.github.io/convergence-lab/'
+    },
+    {
+      ticker: 'DTD', title: 'Structural Credit Risk', cat: 'quant', catLabel: 'Quantitative finance',
+      desc: 'Merton distance to default beside the Bharath-Shumway naive estimator, so the question of whether the simultaneous solve earns its keep can be run rather than argued.',
+      metric: 'Recovery to 1e-12', code: 'https://github.com/omarja12/structural-credit-risk', live: null
+    },
+    {
       ticker: 'VOL', title: 'Crypto Volatility Surface', cat: 'quant', catLabel: 'Quantitative finance',
       desc: 'Arbitrage-free SVI/SSVI calibration on Deribit options. Staged so each layer validates the one beneath it — forward extraction first, because it proves the data before anything is built on top of it.',
       metric: 'Durrleman-gated', code: 'https://github.com/omarja12/crypto-vol-lab', live: 'https://omarja12.github.io/crypto-vol-lab/'
